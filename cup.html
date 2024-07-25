@@ -1,0 +1,116 @@
+<script type="text/javascript" charset="utf-8" async="" src="https://ssl.p.jwpcdn.com/player/v/8.21.0/jwpsrv.js"></script>
+<script src="https://ssl.p.jwpcdn.com/player/v/8.21.0/jwplayer.js"> </script>
+<script> jwplayer.key='XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo';</script>
+
+<script>
+	jQuery(function ($) {
+		var widthPlayer = $("#player").width();
+		var heightPlayer = widthPlayer*(9/16);
+		jwplayer.key = "XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo";
+        var player = jwplayer("player").setup({
+		base: "https://ssl.p.jwpcdn.com/player/v/8.21.0",
+		width: "100%",
+		height: heightPlayer,
+		file: 'https://pull.niues.live/live/stream-235232_lhd.m3u8?auth_key=1721858546-0-0-8dad3455332f8866429ed82fb169bdb5',
+		image:"",
+		title: "timlink.top",
+		displaytitle: false,
+		skin: {
+            controlbar: {
+              //"icons": "#3298da",
+              //"iconsActive": "#29b765"
+            }
+		},
+		autostart: true,
+		repeat: false,
+		"logo": {
+			"file": "",
+            "link": "timlink.top",
+            "hide": "false",
+            "position": "top-right"
+		},
+	});
+	const RETRY_WAIT = 3;   // time 2 retry
+	const RETRY_MAX = 50;    // total retry
+	const showLog = true;   // display log in console
+	var _retried = 0;       // so lan retry
+	var _retryAfter;        // Time 2 la retry
+	var _retryOut;          // timers
+	var _showRetried = false;   // Display thong bao retry hay chua !?
+	function getErrorMessage(data) {
+		return 'Oops, Co loi xay ra!<span class="jw-break jw-reset"></span>Vui long thu lai sau: ' + data + ' giây...';
+	}
+        
+	function setErrorMessage(message) {
+		var errorMsg = document.getElementsByClassName("jw-error-text jw-reset-text");
+		errorMsg[0].innerHTML = message;
+	}
+        
+	// Báº¯t Ä‘áº§u Retry
+	function retryStart() {
+		if(showLog)console.log("retryStart",_retried);
+            _retryAfter = RETRY_WAIT;
+            _retried++;
+            _showRetried = true;
+        
+            // Kiểm tra số lần đã retry
+            if (_retried >= RETRY_MAX){
+                // Đã quá RETRY_MAX lần retry
+                if(showLog)console.log("::::::::Not found server ::::::::", _retried);
+                noSignal();
+            } else {
+                // Hiển thị message đếm ngược
+                _retryOut = setInterval(retryCountDown, 1000);
+                retryCountDown();
+            }
+        }
+        
+        // Kết thúc Retry + Thông báo lỗi noSignal
+        function noSignal() {
+            setErrorMessage('Oops, Co loi xay ra.<span class="jw-break jw-reset"></span>Vui long thu lai sau!');
+        }
+        
+        // Hiển thị message đếm ngược trước khi Retry
+        function retryCountDown() {
+            if(showLog)console.log("retryCountDown", _retryAfter);
+            if (--_retryAfter >= 0) {
+                let message = getErrorMessage(_retryAfter);
+                setErrorMessage(message);
+            } else {
+                clearInterval(_retryOut);
+                retryPlayer();
+            }
+        }
+        
+        // Load lại player
+        function retryPlayer() {
+            var mediafile = player.getPlaylistItem(player.getPlaylistIndex()).file;
+            player.load([{file:mediafile}]);
+            if(showLog)console.log("retryPlayer:::::::: currentSource", _retried, mediafile);
+        }
+        
+        player.on('setupError', function(evt){
+            if(showLog)console.log("setupError", evt.code, evt);
+            if (evt.code == 102630) {
+                let message = 'Chua co tin hieu tran dau.<span class="jw-break jw-reset"></span>Vui long quay lai sau!';
+                setErrorMessage(message)
+            }
+        });
+        
+        player.on('meta', function(evt){
+            //if(showLog)console.log("onMeta", evt, _showRetried, _retried);
+            if (_showRetried) {
+                // Reset lại bộ đếm retry khi player phát stream
+                _retried = 0;
+                _showRetried = false;
+                clearInterval(_retryOut);
+            }
+        });
+        
+        player.on('error', function(evt){
+            if(showLog)console.log("onError", evt);
+            retryStart();
+        });
+        
+	});
+</script>
