@@ -1,0 +1,151 @@
+ <script src="https://cdn.jsdelivr.net/gh/clappr/clappr@latest/dist/clappr.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/clappr/dash-shaka-playback@latest/dist/dash-shaka-playback.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/level-selector@0.2.0/dist/level-selector.min.js" type="text/javascript"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/NaughtyJoker29/live/tv.js" type="text/javascript"></script>
+
+<script src="https://cdn.jsdelivr.net/clappr/latest/clappr.min.js" type="text/javascript"></script>
+
+<script src="https://cdn.jsdelivr.net/clappr.level-selector/latest/level-selector.min.js" type="text/javascript"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/cdnbye@latest/dist/hlsjs-p2p-engine.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/cdnbye@latest/dist/clappr-plugin.min.js"></script>
+
+<script src="js/dash.all.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/clappr/dash-shaka-playback@latest/dist/dash-shaka-playback.js"></script>
+
+</head>
+
+<body>
+
+<div class="player" src="https://ssc-2-on-prem-ak.akamaized.net/out/v1/d9a2acf5f809461ca47714440fcbc0f4/index.mpd"></div>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  const players = document.querySelectorAll('.player')
+
+  let playingInstance = null
+
+  players.forEach(player => {
+
+    const clapprConfig = {
+
+      source: player.getAttribute("src"),
+
+      poster: player.getAttribute("poster"),
+
+      autoPlay: player.getAttribute("auto"),
+
+      height: "260",
+
+      plugins: [DashShakaPlayback, LevelSelector],
+
+       levelSelectorConfig: {
+
+    title: 'Quality',
+
+    labels: {
+
+        3: 'HD',// 700kbps
+
+        2: 'High', // 500kbps
+
+        1: 'Med', // 240kbps
+
+        0: 'Low', // 120kbps
+
+    },
+
+    labelCallback: function(playbackLevel, customLabel) {
+
+        return customLabel + playbackLevel.level.height+'p'; // High 720p
+
+    }
+
+  },
+
+width: "100%",
+
+       watermark: '',
+
+            position: 'top-right',
+
+      shakaConfiguration: {
+
+                drm: {
+
+                clearKeys: {
+
+                   'b8763ccad3d146c2b15f8a77a4d6d733': 'ab87f6ae46b2dc187bd94cbb48cfe074',
+
+                }
+
+                
+
+                }
+
+            },
+
+      
+
+ shakaOnBeforeLoad: function(shaka_player) {
+
+                // shaka_player.getNetworkingEngine().registerRequestFilter() ...
+
+            },
+
+      
+
+    }
+
+    const clappr = new Clappr.Player(clapprConfig);
+
+    clappr.attachTo(player)
+
+    clappr.on(Clappr.Events.PLAYER_PLAY, function() {
+
+ 
+
+  })
+
+    
+
+    var mediaOnPage = Array.prototype.slice.apply(document.querySelectorAll('audio, video'))
+
+mediaOnPage.forEach(function(mediumOnPage)
+
+  {
+
+    mediumOnPage.addEventListener('play', function(event)
+
+      {
+
+        mediaOnPage.forEach(function(mediumOnPage)
+
+          {
+
+            if (event.target != mediumOnPage)
+
+              {
+
+                mediumOnPage.pause();
+
+              }
+
+          })
+
+      })
+
+  })
+
+  });
+
+});
+
+</script>
