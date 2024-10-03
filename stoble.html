@@ -32,7 +32,7 @@ background-color:black;
 <div class='widget-content'>
 <script type="text/javascript">
 // Daftar domain yang diizinkan melakukan iframe
-const allowedDomains = ["www.kltraid.online", "akusukagratisanlo.blogspot.com", "bikinbaru96.blogspot.com"];
+const allowedDomains = ["", "", ""];
 
 // Fungsi untuk memeriksa apakah halaman sedang dimuat di dalam iframe
 function checkAndRedirect() {
@@ -48,7 +48,7 @@ function checkAndRedirect() {
             if (!allowedDomains.includes(referrerDomain)) {
                 console.log("Domain tidak diizinkan, redirecting...");
                 // Redirect jika domain tidak diizinkan
-                window.top.location = "https://www.kltraid.online"; // Ganti dengan URL tujuan yang diinginkan
+                window.top.location = ""; // Ganti dengan URL tujuan yang diinginkan
             } else {
                 console.log("Domain diizinkan, tidak di-redirect.");
             }
