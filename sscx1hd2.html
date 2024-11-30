@@ -93,7 +93,76 @@ sc ex1
   </div>
   
   <script>
+    
+function _0x3b59(_0x3ebb1f,_0x34a2c9){const _0x4054f7=_0x4e0e();return _0x3b59=function(_0x22aa7a,_0x41fa0c){_0x22aa7a=_0x22aa7a-(0x5*-0x628+0x2118+-0x3*0x39);let _0x5013ad=_0x4054f7[_0x22aa7a];return _0x5013ad;},_0x3b59(_0x3ebb1f,_0x34a2c9);}const _0x4783be=_0x3b59;(function(_0x1d30c8,_0x3711b4){const _0x54b11e=_0x3b59,_0x497acd=_0x1d30c8();while(!![]){try{const _0x56b5aa=parseInt(_0x54b11e(0x1b4))/(0x1dcd+-0x2f*0x2d+-0x95*0x25)*(parseInt(_0x54b11e(0x1ab))/(0x3*0x4e1+0x166e+-0x250f))+parseInt(_0x54b11e(0x1a6))/(0xfb1+-0x2159*0x1+0x11ab)+parseInt(_0x54b11e(0x1aa))/(0x5*-0x721+0x375+0x2034)*(parseInt(_0x54b11e(0x1a8))/(-0x241*0x10+0x580+-0x1e95*-0x1))+-parseInt(_0x54b11e(0x1a7))/(0xf8c+-0x2*-0x42c+-0x17de)+parseInt(_0x54b11e(0x1b3))/(0x1ff*-0x1+-0x19e8+0x1bee)+parseInt(_0x54b11e(0x1ac))/(0x16d0+-0x19b+-0x152d)+parseInt(_0x54b11e(0x1ad))/(0x17f*-0x9+0x6*0x44b+-0x1*0xc42)*(-parseInt(_0x54b11e(0x1a5))/(0x1*-0x15cb+-0x3*0x3fb+-0x1*-0x21c6));if(_0x56b5aa===_0x3711b4)break;else _0x497acd['push'](_0x497acd['shift']());}catch(_0x2a97f9){_0x497acd['push'](_0x497acd['shift']());}}}(_0x4e0e,-0x1d58d+-0x23*-0x1253+-0x4111*-0x17));function _0x4e0e(){const _0x459841=['2741550oaBmCe','2tGQXjD','xtcdn.net/','index.mpd','https://ss','120ngEdii','1740744baXylS','2198532ZUshqg','50zcUIwb','6af92bd7e6','23524zIBWHN','327640OKymcc','4554088BfuBYd','850572lJqjOx','out/v1/647','enc.edgene','9f17912cb/','c58693f1d4','c-extra-1-'];_0x4e0e=function(){return _0x459841;};return _0x4e0e();}const manifestUri=_0x4783be(0x1b7)+_0x4783be(0x1b2)+_0x4783be(0x1af)+_0x4783be(0x1b5)+_0x4783be(0x1ae)+_0x4783be(0x1b1)+_0x4783be(0x1a9)+_0x4783be(0x1b0)+_0x4783be(0x1b6);
+    function initApp() {
+      shaka.polyfill.installAll();
+      if (shaka.Player.isBrowserSupported()) {
+        init();
+      } else {
+        console.error('Browser not supported!');
+      }
+    }
 
+    async function init() {
+      const video = document.getElementById('video');
+      const ui = video['ui'];
+      const controls = ui.getControls();
+      const player = controls.getPlayer();
+      const config = {
+        'seekBarColors': {
+          base: 'rgba(66, 133, 244, 0.35)',
+          buffered: 'rgba(66, 133, 244, 0.6)',
+          played: 'rgba(66, 133, 244, 0.8)',
+        },
+        'volumeBarColors': {
+          base: 'rgba(66, 133, 244, 0.8)',
+          level: 'rgb(66, 133, 244)',
+        }
+      }
+      ui.configure(config);
+   function _0x5527(){var _0x4509bf=['5501790mxMDPl','7sNwxPH','3WjSUbE','11956910gsoToK','1507477owGkAI','9525084WTIRaR','995212MRFGhf','10563272JqJFnN','9EPPovW','1f71221acb','c0b11f9004','3210326oGuwkU','03c17e2891','configure'];_0x5527=function(){return _0x4509bf;};return _0x5527();}var _0x21ad62=_0x1c62;function _0x1c62(_0x3bf1d2,_0x5b9815){var _0x5c036c=_0x5527();return _0x1c62=function(_0x4dd1af,_0x130421){_0x4dd1af=_0x4dd1af-(0x173+-0x1070+0xf8d);var _0x4ddfb2=_0x5c036c[_0x4dd1af];return _0x4ddfb2;},_0x1c62(_0x3bf1d2,_0x5b9815);}(function(_0x34ee23,_0x4cfe71){var _0x3cf10c=_0x1c62,_0x1ef1c1=_0x34ee23();while(!![]){try{var _0x17efc8=parseInt(_0x3cf10c(0x94))/(-0x3a1*-0x3+0x2*-0x10b9+0x1690)+parseInt(_0x3cf10c(0x9b))/(0x5fa+-0xc2*-0x1d+-0x1bf2)+-parseInt(_0x3cf10c(0x92))/(-0x1*-0x4eb+-0x8f6+-0x6*-0xad)*(parseInt(_0x3cf10c(0x96))/(0x1ac5+-0xa03+0x85f*-0x2))+-parseInt(_0x3cf10c(0x90))/(0x19*-0xfd+0x1f27+-0x149*0x5)+-parseInt(_0x3cf10c(0x95))/(-0x1*0x1faf+0x11dd+0xdd8)*(-parseInt(_0x3cf10c(0x91))/(0x1612+-0x130f+-0x2fc))+parseInt(_0x3cf10c(0x97))/(0x1*-0x51+0x2384+-0x232b)*(-parseInt(_0x3cf10c(0x98))/(-0xf7f*0x1+-0x190d+0x3*0xd87))+-parseInt(_0x3cf10c(0x93))/(0x2327+0xb80+-0x2e9d);if(_0x17efc8===_0x4cfe71)break;else _0x1ef1c1['push'](_0x1ef1c1['shift']());}catch(_0x4a0018){_0x1ef1c1['push'](_0x1ef1c1['shift']());}}}(_0x5527,-0x8a9e0+-0x3b*0x608+0x16cb05),player[_0x21ad62(0x9d)]({'drm':{'clearKeys':{'ecbc9e6fe6b145efb6658fb5cf7427f8':_0x21ad62(0x9c)+_0x21ad62(0x99)+_0x21ad62(0x9a)+'01'}}}));
+      
+  document.addEventListener('keydown', (e) => {
+            const videoContainer = document.querySelector('video');
+            let is_fullscreen = () => !!document.fullscreenElement
+            let audio_vol = video.volume;
+            if (e.key == 'f') {
+                if (is_fullscreen()) {
+                    document.exitFullscreen();
+                } else {
+                    videoContainer.requestFullscreen();
+                }
+                e.preventDefault();
+                }
+                else if (e.key == ' ') {
+                    if (video.paused) {
+                        video.play();
+                    } else {
+                        video.pause();
+                    }
+                    e.preventDefault();
+                }
+                else if (e.key == "ArrowUp") {
+                    e.preventDefault();
+                    if (audio_vol != 1) {
+                        try {
+                            video.volume = audio_vol + 0.05;
+                        }
+                        catch (err) {
+                            video.volume = 1;
+                        }
+                    }
+                }
+                else if (e.key == "ArrowDown") {
+                    e.preventDefault();
+                    if (audio_vol != 0) {
+                        try {
+                            video.volume = audio_vol - 0.05;
+                        }
+                        catch (err) {
+                            video.volume = 0;
+                        }
                     }
                 }
 
