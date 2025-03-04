@@ -394,39 +394,47 @@ ConsoleBan.init()
 ConsoleBan.init({
   redirect: '/'
 })
-</script>
-<body >
-  <div id="player-container">
-  <div id="player"></div>   <button id='unmute-btn' onclick='WSUnmute()' tabindex="0"></button>
-</div>
-  <script>
-    var meta = document.createElement('meta');
-    meta.name = 'referrer';
-    meta.content = 'no-referrer';
-    document.getElementsByTagName('head')[0].appendChild(meta);
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PLAYER</title>
 
-    function WSUnmute() {
-        document.getElementById('unmute-btn').style.display = 'none';
-        player.setVolume(100);
-    }
-    // Manejar la tecla Enter
-    document.getElementById('unmute-btn').addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') {
-            WSUnmute();
-        }
-    });
+<script type='text/javascript' src='https://content.jwplatform.com/libraries/IDzF9Zmk.js'></script>
+<script type="text/javascript">jwplayer.key = 'Khpp2dHxlBJHC8MCmLnBuV2jK/DwDnJMniwF6EO9HC/riJ712ZmbHg==';</script>
+<link rel="stylesheet" href="https://cdn.plyr.io/3.6.2/plyr.css" />
+<script src="https://cdn.plyr.io/3.6.3/plyr.js"></script>
+
+  <script src="https://content.jwplatform.com/libraries/SAHhwvZq.js"></script>
+  <script type="text/javascript">
+    jwplayer.key = 'Khpp2dHxlBJHC8MCmLnBuV2jK/DwDnJMniwF6EO9HC/riJ712ZmbHg==';
+  </script>
+    <script src="https://cdn.jsdelivr.net/npm/@clappr/player@0.8/dist/clappr.min.js"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/@swarmcloud/hls/p2p-engine.min.js"></script> 
+  <link rel="stylesheet" type="text/css" href="https://la12hd.com/cssm.css"> 
+
+</head>
+<body>
+<div class="header">
+<div class="header"></div>
+<div id="jwplayerDiv"></div>
+<meta content="never" name="referrer">
+<body>
+  <div id="player"></div>
+  <script>
     var player = new Clappr.Player({
-      source: 'https://i.kitescdnz.net/live/v1/2fY1EqgbBYNSDJGiAen2pL0+wlHsqpNrqmy9MjZl66iRAmgW78XLaXa6mLIqAFbB/index.m3u8',
-      autoPlay: true, // Set autoplay (with capital 'P')
-      mute: true, // Set player to mute initially
-      mimeType: 'application/x-mpegURL',
-      height: '100%',
-      width: '100%',
-       watermark: '',
-            position: 'top-right',
-    
-      parentId: '#player',
-  });
+      source: "https://i.kitescdnz.net/live/v1/2fY1EqgbBYNSDJGiAen2pL0+wlHsqpNrqmy9MjZl66iRAmgW78XLaXa6mLIqAFbB/index.m3u8",
+      autoPlay: true, // Set autoplay (with capital 'P') 
+      mute: false, // Set player to mute initially
+      watermark: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx_Ip0OUWbD8D2nZjaZt6SX4CEzTUFSNhC5g&usqp=CAU",
+      
+      position: "top-right",
+      width: "100%",
+      height: "350px",
+      parentId: "#player",
+      plugins: [],
+      mediacontrol: {seekbar: "#D4ED31", buttons: "#FFFFFF"},
+      });     
   </script>
 
 
